@@ -14,7 +14,7 @@ class OrderItem extends Model
         'total_price'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'quantity' => 'integer',
         'unit_price' => 'float',
         'total_price' => 'float'

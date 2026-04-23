@@ -14,10 +14,12 @@ class Order extends Model
         'shipped_at'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'status' => OrderStatus::class,
         'total_amount' => 'integer',
     ];
+
+    protected array $with = ['items', 'customer'];
 
     public function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

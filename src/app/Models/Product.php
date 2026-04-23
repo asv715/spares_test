@@ -17,8 +17,13 @@ class Product extends Model
         'category'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'price' => 'float',
         'stock_quantity' => 'integer'
     ];
+
+    public function scopeOfId($query, array $productIds)
+    {
+        $query->whereIn('id', $productIds);
+    }
 }

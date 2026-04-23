@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
             'sku' => $this->faker->randomElement(Constants::SKU_VARIANTS),
             'price' => $this->faker->randomFloat(2, 10, 100) ,
-            'stock_quantity' => $this->faker->randomNumber(),
+            'stock_quantity' => $this->faker->numberBetween(1, 10),
             'category' =>  $this->faker->randomElement(Constants::CATEGORIES),
         ];
     }

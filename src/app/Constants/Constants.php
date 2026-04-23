@@ -9,6 +9,7 @@ class Constants
     const ORDER_STATUS_PROCESSING = 'В обработке';
     const ORDER_STATUS_SHIPPED = 'Доставлен';
     const ORDER_STATUS_COMPLETED = 'Выполнен';
+    const ORDER_STATUS_CANCELLED = 'Отменен';
 
     const SKU_VARIANTS = [
         'Красный',
@@ -29,4 +30,7 @@ class Constants
         'Электрика',
         'Кузов',
     ];
+
+    const PRODUCTS_PER_PAGE = 15;
+    const ORDERS_PER_PAGE = 10;
 }
