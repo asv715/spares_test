@@ -114,6 +114,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/predis/predis" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

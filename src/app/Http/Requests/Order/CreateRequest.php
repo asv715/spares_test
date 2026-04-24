@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests\Order;
 
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateRequest extends FormRequest
 {
+    use FailedValidation;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -24,6 +27,14 @@ class CreateRequest extends FormRequest
         return [
             'customerId' => 'required|numeric',
             'items' => 'required|array'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'customerId.required' => 'Не указан покупатель',
+            'items.required' => 'Не указаны товары'
         ];
     }
 }

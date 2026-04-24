@@ -29,12 +29,12 @@ enum OrderStatus: string
     public function canChangeTo(OrderStatus $nextStatus): bool
     {
         $possibleSwitch = [
-            self::NEW => [self::CONFIRMED, self::CANCELLED],
-            self::CONFIRMED => [self::PROCESSING, self::CANCELLED],
-            self::PROCESSING => [self::SHIPPED],
-            self::SHIPPED => [self::COMPLETED],
+            self::NEW->value => [self::CONFIRMED, self::CANCELLED],
+            self::CONFIRMED->value => [self::PROCESSING, self::CANCELLED],
+            self::PROCESSING->value => [self::SHIPPED],
+            self::SHIPPED->value => [self::COMPLETED],
         ];
 
-        return in_arraY($nextStatus, $possibleSwitch[$this]);
+        return in_arraY($nextStatus, $possibleSwitch[$this->value]);
     }
 }

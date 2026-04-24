@@ -23,6 +23,6 @@ class ExportOrderJob implements ShouldQueue
     public function handle(): void
     {
         Http::retry(3, 100)
-            ->post(Config::get('app.external_order_url'), $this->order);
+            ->post(Config::get('app.external_order_url') . '/post', $this->order);
     }
 }

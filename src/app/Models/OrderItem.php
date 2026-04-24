@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
+    public $timestamps = false;
+
     protected array $fillable = [
         'order_id',
         'product_id',
@@ -19,6 +21,8 @@ class OrderItem extends Model
         'unit_price' => 'float',
         'total_price' => 'float'
     ];
+
+    protected array $with = ['product'];
 
     public function order(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

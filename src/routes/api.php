@@ -10,7 +10,7 @@ Route::prefix('/orders')->group(function() {
     Route::post('/', [OrderController::class, 'create'])->name('create-order');
 
     Route::get('/', [OrderController::class, 'getList']);
-    Route::get('/{orderId}', [OrderController::class, 'getDetail'])->whereNumber('orderId');
+    Route::get('/{order}', [OrderController::class, 'getDetail']);
 
-    Route::patch('/{orderId}/status', [OrderController::class, 'updateStatus'])->whereNumber('orderId');
+    Route::patch('/{order}/status', [OrderController::class, 'updateStatus']);
 });

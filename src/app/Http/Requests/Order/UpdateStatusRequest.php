@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests\Order;
 
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateStatusRequest extends FormRequest
 {
+    use FailedValidation;
+
     /**
      * Determine if the user is authorized to make this request.
      */

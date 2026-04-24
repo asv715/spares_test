@@ -12,6 +12,7 @@ use App\Exceptions\NotEnoughOnStockException;
 use App\Exceptions\ProductCountMismatchException;
 use App\Models\Order;
 use App\Models\Product;
+use App\Enums\OrderStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,7 @@ class OrderService
     {
         $newOrder = null;
 
-        $itemsInOrder = Product::ofId(array_column($createDTO->items, 'id'))->get();
+        $itemsInOrder = Product::ofId(array_column($createDTO->items, 'productId'))->get();
         $quantitiesById = collect($createDTO->items)->mapWithKeys(function($item) {
             return [$item['productId'] => $item['quantity']];
         });
@@ -60,7 +61,8 @@ class OrderService
         DB::transaction(function() use($createDTO, $itemsInOrder, &$newOrder, $quantitiesById) {
             $newOrder = Order::create([
                 'customer_id' => $createDTO->customerId,
-                'total_amount' => collect($createDTO->items)->sum('quantity')
+                'total_amount' => collect($createDTO->items)->sum('quantity'),
+                'status' => OrderStatus::NEW
             ]);
             $items = $itemsInOrder->map(function($item) use($quantitiesById) {
                 return [

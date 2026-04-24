@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Observers\OrderObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\OrderStatus;
 
 #[ObservedBy(OrderObserver::class)]
 class Order extends Model
